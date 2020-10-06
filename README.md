@@ -1,2 +1,2 @@
 # face_Recognition
-Face recognition System using opoencv.
+Face recognition System using opencv.
