@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-recognizer = cv2.createLBPHFaceRecognizer()
+recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.load('trainner/trainner.yml')
 cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath)
@@ -16,7 +16,7 @@ while True:
     for(x,y,w,h) in faces:
         cv2.rectangle(im,(x,y),(x+w,y+h),(225,0,0),2)
         Id, conf = recognizer.predict(gray[y:y+h,x:x+w])
-        if(conf&lt;50):
+        if(conf >50):
             if(Id==1):
                 Id="Anirban"
             elif(Id==2):
@@ -25,7 +25,7 @@ while True:
             Id="Unknown"
         cv2.cv.PutText(cv2.cv.fromarray(im),str(Id), (x,y+h),font, 255)
     cv2.imshow('im',im) 
-    if cv2.waitKey(10) &amp; 0xFF==ord('q'):
+    if cv2.waitKey(10) & 0xFF==ord('q'):
         break
 cam.release()
 cv2.destroyAllWindows()
