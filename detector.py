@@ -18,9 +18,7 @@ while True:
         Id, conf = recognizer.predict(gray[y:y+h,x:x+w])
         if(conf >50):
             if(Id==1):
-                Id="Anirban"
-            elif(Id==2):
-                Id="Sam"
+                Id="FAIZEE"
         else:
             Id="Unknown"
         cv2.cv.PutText(cv2.cv.fromarray(im),str(Id), (x,y+h),font, 255)
